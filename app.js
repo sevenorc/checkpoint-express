@@ -4,6 +4,9 @@ const expresslayouts = require("express-ejs-layouts");
 const app = express();
 const port = 5000;
 
+app.use(express.static("public"));
+app.use("/css", express.static(__dirname + "public/css"));
+
 const myFunction = function (req, res, next) {
   let date = new Date();
   let day = date.getDay();
@@ -12,7 +15,7 @@ const myFunction = function (req, res, next) {
     console.log("A new request received at " + Date.now());
     next();
   } else {
-    next(res.send("<h1>ghgjhghghk;</h1>"));
+    next(res.send("<h1>Sorry we are actually closed ! </h1>"));
   }
 };
 
